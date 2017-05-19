@@ -34,6 +34,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
+        APIManager.main.search(completionHandler: {
+            (ret, error) in
+            if ret {
+                print("La base de donnée est à jours")
+            }
+        })
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
 

@@ -7,12 +7,20 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        let realm = try! Realm()
+        let meteos = realm.objects(Meteo.self)
+        
+        print(meteos.last!)
+        
     }
 
     override func didReceiveMemoryWarning() {
