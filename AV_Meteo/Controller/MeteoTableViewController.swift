@@ -26,12 +26,15 @@ class MeteoTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "Météo :)"
+        
         // On récupère la météo pour les dates > à la date d'aujourd'hui
         let predicate = NSPredicate(format: "dt > %d", (Int(NSDate().timeIntervalSince1970) - treeH))
         let realm = try! Realm()
         let results = realm.objects(Meteo.self)
             .filter(predicate)
         
+        // Initialisastion de la table
         initByDay(meteos: results.map{MeteoViewModel(meteo:$0)})
         
         // Block de notification pour les updates sur la BDD
@@ -65,6 +68,7 @@ class MeteoTableViewController: UITableViewController {
         
         APIManager.main.search() {
             ret, error in
+            print("La base de donnée est à jours")
             DispatchQueue.main.async(execute: {() -> Void in
                 self.refreshControl!.endRefreshing()
             })
@@ -105,6 +109,18 @@ class MeteoTableViewController: UITableViewController {
         
         cell.setupCell(withMeteo: rawMeteo[sectionMeteo[indexPath.section]]![indexPath.row])
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "ToDetails", sender: indexPath)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let indexPath = sender as? IndexPath else {return}
+        
+        let dvc = segue.destination as! DetailsMeteoViewController
+        dvc.meteo = rawMeteo[sectionMeteo[indexPath.section]]![indexPath.row]
     }
 }
 

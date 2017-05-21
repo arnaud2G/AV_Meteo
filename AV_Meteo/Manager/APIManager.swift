@@ -8,7 +8,6 @@
 
 import Foundation
 import RealmSwift
-import RxSwift
 
 class APIManager {
     static let main = APIManager()
