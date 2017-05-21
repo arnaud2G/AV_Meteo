@@ -119,8 +119,28 @@ class MeteoViewModel {
         return "\(Int(meteo.temp_max-kelvinCst))°"
     }
     
+    var tempMinDescription: String {
+        return "Température min : \(Int(meteo.temp_min-kelvinCst))°"
+    }
+    
+    var tempMaxDescription: String {
+        return "Température max : \(Int(meteo.temp_max-kelvinCst))°"
+    }
+    
+    var meteoText: String {
+        return meteo.descr
+    }
+    
     var iconUrl:URL {
         return URL(string: String(format: iconURL, meteo.icon))!
+    }
+    
+    var windDescription: String {
+        return "Vitesse du vent : \(Int(meteo.speed))"
+    }
+    
+    var humidityDescription: String {
+        return "Humidité de l'air : \(Int(meteo.humidity))%"
     }
     
     init(meteo: Meteo) {

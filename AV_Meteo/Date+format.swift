@@ -16,10 +16,6 @@ extension Date {
         let dayMs:Double = 86400
         let dateToday = Calendar.current.startOfDay(for: Date()).timeIntervalSince1970
         
-        print(dateFrom1970)
-        print(dateToday)
-        print(dateToday + dayMs)
-        
         if dateToday == dateFrom1970 {
             return "\(NSLocalizedString("Aujourd'hui", comment: "Aujourd'hui"))"
         }
