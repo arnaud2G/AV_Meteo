@@ -3,7 +3,7 @@
 
 - Voici mon travail sur le test technique : application météo à 5 jours sur Paris. Par manque de temps je n'ai pas vraiment travaillé l'aspect graphique (pas du tout en fait)
 
-- J'ai utilisé 2 bibliothèque : 
+- J'ai utilisé 2 bibliothèques (a installer avec cocoapods : pod install) : 
    - RealmSwift pour la base de donnée que je voulais essayer (a regret, CoreData est plus mature)
    - ObjectMapper pour le dechiffrage des JSON
    
