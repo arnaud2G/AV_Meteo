@@ -9,14 +9,4 @@ target 'AV_Meteo' do
   pod 'ObjectMapper', '~> 2.2'
 # Pods for AV_Meteo
 
-  target 'AV_MeteoTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'AV_MeteoUITests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
 end
